@@ -1,0 +1,121 @@
+# Override the default values of the info endpoint
+info:
+    app:
+        name: ${name}
+        description: ${description}
+        version: ${version}
+        realm: development
+
+# enable shutdown of application via a POST
+endpoints:
+    shutdown:
+        enabled: true
+    health:
+        sensitive: false    # display full details for non-authenticated requests
+
+# show the banner file during startup
+spring:
+    main:
+        show_banner: true
+
+    groovy:
+        template:
+            check-template-location: false
+    jackson:
+        serialization:
+            indent_output: true
+
+    jpa:
+#       properties.*:
+        open-in-view: true
+        show-sql: true
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#       database:
+        generate-ddl: true # ignored by Hibernate, might be useful for other vendors
+        hibernate:
+#           naming-strategy:
+            ddl-auto: create-drop
+        repositories:
+            enabled: true # if spring data repository support is enabled
+
+    datasource:
+#       name: # name of the data source
+        initialize: true # populate using data.sql
+#       schema: # a schema (DDL) script resource reference
+#       data: # a data (DML) script resource reference
+        sql-script-encoding: UTF-8
+#       platform:
+        continue-on-error: false # continue even if can't be initialized
+        separator: ; # statement separator in SQL initialization scripts
+#       driver-class-name:
+        url: jdbc:mysql://mysql/monitor
+        username: root
+        password: sa
+#       jndi-name:
+        max-active: 100
+        max-idle: 8
+        min-idle: 8
+        initial-size: 10
+        validation-query: SELECT 1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+#       time-between-eviction-runs-millis: 60000
+#       min-evictable-idle-time-millis: 60000
+#       max-wait: 0
+        jmx-enabled: false
+
+# specify the port the service should bind to when using the embedded container, a value of 0 will bind to a randomly selected available port
+server:
+    port: 8300
+
+# be ready for HTTP proxying
+    tomcat:
+        remote_ip_header: x-forwarded-for
+        protocol_header: x-forwarded-proto
+
+security:
+    basic:
+        enabled: false
+
+# the context to use for the operation actuators, eg /operations/info
+management:
+    context-path: /operations
+    security:
+        enabled: false
+
+# operations shell
+shell:
+    auth:
+        simple:
+            user:
+                name: operations
+                password: operations
+
+# which logback configuration file to use
+logging:
+    config: classpath:logback.xml
+
+example:
+    exchange: monitoring
+    requireCorrelationId: true
+
+#---------e Profile specific overrides ----------#
+
+# integration testing
+---
+spring:
+    profiles: integration
+
+info:
+    app:
+        realm: integration-test
+
+# live
+---
+spring:
+    profiles: live
+
+info:
+    app:
+        realm: production
