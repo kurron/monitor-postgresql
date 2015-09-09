@@ -29,7 +29,7 @@ spring:
 #       properties.*:
         open-in-view: true
         show-sql: true
-        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
 #       database:
         generate-ddl: true # ignored by Hibernate, might be useful for other vendors
         hibernate:
@@ -48,9 +48,9 @@ spring:
         continue-on-error: false # continue even if can't be initialized
         separator: ; # statement separator in SQL initialization scripts
 #       driver-class-name:
-        url: jdbc:mysql://mysql/monitor
-        username: root
-        password: sa
+        url: jdbc:postgresql://postgresql/monitor
+        username: postgres
+        password: postgres
 #       jndi-name:
         max-active: 100
         max-idle: 8
