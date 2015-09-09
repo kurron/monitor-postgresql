@@ -67,7 +67,7 @@ spring:
 
 # specify the port the service should bind to when using the embedded container, a value of 0 will bind to a randomly selected available port
 server:
-    port: 8300
+    port: 8400
 
 # be ready for HTTP proxying
     tomcat:

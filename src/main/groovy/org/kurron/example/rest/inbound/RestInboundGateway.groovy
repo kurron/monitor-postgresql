@@ -101,7 +101,7 @@ class RestInboundGateway extends AbstractFeedbackAware {
     }
 
     private static MessageProperties newProperties() {
-        MessagePropertiesBuilder.newInstance().setAppId( 'monitor-mysql' )
+        MessagePropertiesBuilder.newInstance().setAppId( 'monitor-postgresql' )
                                               .setContentType( 'application/json' )
                                               .setMessageId( UUID.randomUUID().toString() )
                                               .setDeliveryMode( MessageDeliveryMode.NON_PERSISTENT )
