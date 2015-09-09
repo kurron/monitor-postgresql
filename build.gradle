@@ -45,7 +45,7 @@ dependencies {
     compile "org.codehaus.gpars:gpars:${gparsVersion}"
     compile "org.kurron:tools-groovy:${toolsGroovyVersion}"
 
-    runtime "mysql:mysql-connector-java:${mySqlDriverVersion}"
+    runtime "org.postgresql:postgresql:${postgreSqlDriverVersion}"
 }
 
 defaultTasks << 'clean'
