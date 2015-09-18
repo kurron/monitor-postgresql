@@ -24,7 +24,11 @@ buildscript {
     }
 }
 
-description = 'Bare bones example REST micro-service'
+plugins {
+    id "com.jfrog.bintray" version "1.3.1"
+}
+
+description = 'The PostgreSQL service of the monitoring simulator'
 group = 'org.kurron.example'
 
 ext.coverageExcludes = []
@@ -39,6 +43,7 @@ apply from: "$rootDir/gradle/maven-publish.gradle"
 apply from: "$rootDir/gradle/spock.gradle"
 apply from: "$rootDir/gradle/dependency-exclusions.gradle"
 apply from: "$rootDir/gradle/conflicts.gradle"
+apply from: "$rootDir/gradle/bintray.gradle"
 
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}:indy"
