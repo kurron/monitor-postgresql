@@ -40,7 +40,7 @@ The application can respond to health checks and report back whether or not conn
 correct.
 
 ##Use Docker
-There is a [companion project](https://github.com/kurron/docker-postgresql-mongodb) that wraps the application into a Docker container and is
+There is a [companion project](https://github.com/kurron/docker-monitor-postgresql) that wraps the application into a Docker container and is
 probably a more convenient way to launch the application.
 
 ##Configuration
