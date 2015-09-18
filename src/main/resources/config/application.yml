@@ -39,8 +39,8 @@ spring:
             enabled: true # if spring data repository support is enabled
 
     datasource:
-        name: monitor
-        url: jdbc:postgresql://postgresql/monitor 
+        name: postgres
+        url: jdbc:postgresql://postgresql/postgres
         username: postgres
         password: postgres
         initial-size: 5
