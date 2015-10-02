@@ -51,6 +51,7 @@ dependencies {
     compile "org.kurron:tools-groovy:${toolsGroovyVersion}"
 
     runtime "org.postgresql:postgresql:${postgreSqlDriverVersion}"
+    runtime "net.logstash.logback:logstash-logback-encoder:${logstashLogbackVersion}"
 }
 
 defaultTasks << 'clean'
